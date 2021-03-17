@@ -9,20 +9,16 @@ const Wrapper = styled.div`
   padding-left: calc(var(--gutter) * 2);
   padding-right: calc(var(--gutter) * 2);
 
-  @media (min-width: 36em) {
-    max-width: var(--container-sm);
+  @media (min-width: 1024px) {
+    max-width: 62em;
   }
 
-  @media (min-width: 48em) {
-    max-width: var(--container-md);
+  @media (min-width: 1200px) {
+    max-width: 73.25rem;
   }
 
-  @media (min-width: 62em) {
-    max-width: var(--container-lg);
-  }
-
-  @media (min-width: 75em) {
-    max-width: var(--container-xl);
+  @media (min-width: 1440px) {
+    max-width: 89.5rem;
   }
 `;
 

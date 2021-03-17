@@ -8,11 +8,12 @@ const GlobalStyles = createGlobalStyle`
 
   :root {
     /* Typography */
-    --main-font: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --mainFont: 'Yantramanav', sans-serif;
 
     /* Colors */
-    --black: #222;
+    --darkGray: #0f1312;
     --white: #fff;
+    --pink: #cc064c;
 
     /* Units */
     --gutter: .9375rem; // 15px
@@ -33,12 +34,11 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    color: var(--black);
-    font-family: var(--main-font);
+    color: var(--white);
+    font-family: var(--mainFont);
   }
 
   a {
-    color: var(--black);
     text-decoration: none;
   }
 

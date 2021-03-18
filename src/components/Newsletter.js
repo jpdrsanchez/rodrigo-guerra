@@ -45,7 +45,7 @@ const home = css`
     grid-row: 1;
     grid-column: span 2;
 
-    @media (min-width: 1200px) {
+    @media (min-width: 1024px) {
       font-size: 1.25rem;
     }
 

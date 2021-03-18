@@ -26,27 +26,41 @@ const Wrapper = styled.section`
     margin-top: 1.75rem;
   }
 
-  div {
-    padding: 2rem 1rem;
-    z-index: 500;
-
-    @media (max-width: 1023px) {
-      text-align: center;
+  & > div {
+    @media (min-width: 1024px) {
       background-color: rgba(255, 255, 255, 0.09);
       backdrop-filter: blur(4px);
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background-image: url('/degrade.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
     }
 
-    @media (min-width: 1024px) {
-      grid-row: 2;
-      padding: 0.4375rem 0.5rem;
-    }
+    div {
+      padding: 2rem 1rem;
+      z-index: 500;
 
-    @media (min-width: 1200px) {
-      padding: 1rem;
-    }
+      @media (max-width: 1023px) {
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.09);
+        backdrop-filter: blur(4px);
+      }
 
-    @media (min-width: 1440px) {
-      padding: 1.8125rem 2.5rem;
+      @media (min-width: 1024px) {
+        grid-row: 2;
+        padding: 0.4375rem 0.5rem;
+      }
+
+      @media (min-width: 1200px) {
+        padding: 1rem;
+      }
+
+      @media (min-width: 1440px) {
+        padding: 1.8125rem 2.5rem;
+      }
     }
   }
 
@@ -86,60 +100,30 @@ const Wrapper = styled.section`
   }
 `;
 
-const Bg = styled.span`
-  display: block;
-  position: absolute;
-  width: ${(props) => props.bgWidth && props.bgWidth * 2 + 'px'};
-  height: ${(props) => props.bgHeight + 'px'};
-  background-color: rgba(255, 255, 255, 0.09);
-  backdrop-filter: blur(4px);
-  background-image: url('/degrade.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  z-index: 400;
-`;
-
 const HomeValues = () => {
   const { tablet, desktop } = useMediaQuery();
-  const [divDimension, setDivDimension] = useState({ width: 0, height: 0 });
-  const div = useRef();
-
-  useEffect(() => {
-    const setBgDimensions = () => {
-      const { width, height } = div.current.getBoundingClientRect();
-      setDivDimension({ width, height });
-    };
-    setBgDimensions();
-
-    window.addEventListener('resize', setBgDimensions);
-    return () => {
-      window.removeEventListener('resize', setBgDimensions);
-    };
-  }, []);
 
   return (
     <Wrapper>
       {(tablet || desktop) && (
         <img src="/foto-rodrigo.png" alt="Foto Rodrigo Guerra" />
       )}
-      <div ref={div}>
-        <h2>Inovação</h2>
-        <p>
-          Vai além da adoção de tecnologia. Depende de mentalidade inovadora e
-          modelos práticos que transformam negócios.
-        </p>
-      </div>
       <div>
-        <h2>Saúde</h2>
-        <p>
-          Essa transformação de negócios só acontece quando pessoas se conectam
-          e compartilham conhecimento.
-        </p>
+        <div>
+          <h2>Inovação</h2>
+          <p>
+            Vai além da adoção de tecnologia. Depende de mentalidade inovadora e
+            modelos práticos que transformam negócios.
+          </p>
+        </div>
+        <div>
+          <h2>Saúde</h2>
+          <p>
+            Essa transformação de negócios só acontece quando pessoas se
+            conectam e compartilham conhecimento.
+          </p>
+        </div>
       </div>
-      {desktop && (
-        <Bg bgWidth={divDimension.width} bgHeight={divDimension.height} />
-      )}
     </Wrapper>
   );
 };

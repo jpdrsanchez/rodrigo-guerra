@@ -6,8 +6,8 @@ const Wrapper = styled.div`
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: calc(var(--gutter) * 2);
-  padding-right: calc(var(--gutter) * 2);
+  padding-left: 1rem;
+  padding-right: 1rem;
 
   @media (min-width: 1024px) {
     max-width: 62em;

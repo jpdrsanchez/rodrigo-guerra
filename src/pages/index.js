@@ -1,90 +1,28 @@
-import dynamic from 'next/dynamic';
-import Head from 'next/head';
-
-import Container from '../components/Container';
-import Header from '../components/Header';
-import AsideBg from '../components/helpers/AsideBg';
-import HomeCta from '../components/Home/HomeCta';
-// import HomeValues from '../components/Home/HomeValues';
-import HomeNews from '../components/Home/HomeNews';
-import Layout from '../components/Layout';
-import Main from '../components/Main';
-import Newsletter from '../components/Newsletter';
-
-const HomeValues = dynamic(() => import('../components/Home/HomeValues'), {
-  ssr: false,
-});
-
-import useMediaQuery from '../hooks/useMediaQuery';
+import Menu from '../components/Menu';
+import fetchContents from '../lib/fetchContents';
+import { useRouter } from 'next/router';
 import { GET_ASIDE_POSTS } from '../lib/api';
 
-const Home = ({ data }) => {
-  const { desktop } = useMediaQuery();
+const index = ({ data }) => {
+  const { pathname } = useRouter();
+
   return (
-    <Main>
-      <Head>
-        <title>Rodrigo Guerra | Home</title>
-      </Head>
-      <Container>
-        <Layout page="home">
-          <Header />
-          <HomeCta />
-          <Newsletter page="home" />
-          {!desktop && (
-            <AsideBg>
-              <HomeValues />
-              {data.map(
-                (post, index) =>
-                  index === 0 && (
-                    <HomeNews
-                      key={post.id}
-                      category={post._embedded['wp:term'][0][0].name}
-                      title={post.title.rendered}
-                      link={post.slug}
-                      image={post._embedded['wp:featuredmedia'][0].source_url}
-                    />
-                  ),
-              )}
-            </AsideBg>
-          )}
-          {desktop && (
-            <>
-              <HomeValues />
-              {data.map(
-                (post, index) =>
-                  index === 0 && (
-                    <HomeNews
-                      key={post.id}
-                      category={post._embedded['wp:term'][0][0].name}
-                      title={post.title.rendered}
-                      link={post.slug}
-                      image={post._embedded['wp:featuredmedia'][0].source_url}
-                    />
-                  ),
-              )}
-            </>
-          )}
-          {data.map(
-            (post, index) =>
-              index > 0 && (
-                <HomeNews
-                  key={post.id}
-                  category={post._embedded['wp:term'][0][0].name}
-                  title={post.title.rendered}
-                  link={post.slug}
-                  image={post._embedded['wp:featuredmedia'][0].source_url}
-                />
-              ),
-          )}
-        </Layout>
-      </Container>
-    </Main>
+    <>
+      <Menu current={pathname} />
+      <h1>Post List</h1>
+      <ul style={{ color: 'black' }}>
+        {data.map((post) => (
+          <li key={post.id}>{post.title.rendered}</li>
+        ))}
+      </ul>
+    </>
   );
 };
 
 export const getStaticProps = async () => {
-  const response = await fetch(GET_ASIDE_POSTS(4));
-  const data = await response.json();
+  const { data } = await fetchContents(`${GET_ASIDE_POSTS(4)}`);
+
+  if (!data) return { notFound: true };
 
   return {
     props: {
@@ -94,4 +32,4 @@ export const getStaticProps = async () => {
   };
 };
 
-export default Home;
+export default index;

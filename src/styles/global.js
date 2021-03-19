@@ -34,6 +34,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    background-color: var(--darkGray);
     color: var(--white);
     font-family: var(--mainFont);
   }

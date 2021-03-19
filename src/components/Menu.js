@@ -1,5 +1,48 @@
 import Link from 'next/link';
 
+import styled from 'styled-components';
+
+const StyledMenu = styled.nav`
+  ul {
+    display: flex;
+    align-items: center;
+  }
+
+  li {
+    &:not(:last-child) {
+      margin-right: 1.875rem;
+    }
+  }
+
+  a {
+    color: var(--white);
+    font-feature-settings: 'kern' off;
+    font-size: 1.125rem;
+    font-weight: 200;
+    letter-spacing: 0.265em;
+    line-height: 1.25;
+    position: relative;
+    text-transform: uppercase;
+    transition: all 0.3s;
+
+    &:hover {
+      color: var(--pink);
+    }
+
+    &.active {
+      &::after {
+        background: var(--pink);
+        content: '';
+        display: block;
+        height: 0.1875rem;
+        width: 95%;
+        position: absolute;
+        bottom: -0.5rem;
+      }
+    }
+  }
+`;
+
 const Menu = ({ current }) => {
   const menuItems = {
     ['/']: 'home',
@@ -8,7 +51,7 @@ const Menu = ({ current }) => {
   };
 
   return (
-    <nav>
+    <StyledMenu>
       <ul>
         <li>
           <Link href="/">
@@ -32,7 +75,7 @@ const Menu = ({ current }) => {
           </Link>
         </li>
       </ul>
-    </nav>
+    </StyledMenu>
   );
 };
 

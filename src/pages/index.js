@@ -6,16 +6,7 @@ import Template from '../components/Template';
 import { GET_ASIDE_POSTS } from '../lib/api';
 import fetchContents from '../lib/fetchContents';
 
-const index = ({ data, notFound }) => {
-  if (notFound)
-    return (
-      <Template page="home">
-        <HomeTitle />
-        <Newsletter />
-        <HomeValues />
-      </Template>
-    );
-
+const index = ({ data }) => {
   return (
     <Template page="home">
       <HomeTitle />
@@ -28,8 +19,6 @@ const index = ({ data, notFound }) => {
 
 export const getStaticProps = async () => {
   const { data } = await fetchContents(GET_ASIDE_POSTS(4));
-
-  if (!data) return { notFound: true };
 
   return {
     props: {

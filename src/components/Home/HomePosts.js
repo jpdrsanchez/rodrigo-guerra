@@ -98,23 +98,25 @@ const Wrapper = styled.section`
 `;
 
 const HomePosts = ({ postData }) => {
-  return (
-    <Wrapper>
-      {postData.map((post) => (
-        <article key={post.id}>
-          <img
-            src={post._embedded['wp:featuredmedia'][0].link}
-            alt={post._embedded['wp:featuredmedia'][0].alt_text}
-          />
-          <h2>{post._embedded['wp:term'][0][0].name}</h2>
-          <h1>{post.title.rendered}</h1>
-          <Link href={`/blog/${post.slug}`}>
-            <a>Leia Mais</a>
-          </Link>
-        </article>
-      ))}
-    </Wrapper>
-  );
+  if (postData)
+    return (
+      <Wrapper>
+        {postData.map((post) => (
+          <article key={post.id}>
+            <img
+              src={post._embedded['wp:featuredmedia'][0].link}
+              alt={post._embedded['wp:featuredmedia'][0].alt_text}
+            />
+            <h2>{post._embedded['wp:term'][0][0].name}</h2>
+            <h1>{post.title.rendered}</h1>
+            <Link href={`/blog/${post.slug}`}>
+              <a>Leia Mais</a>
+            </Link>
+          </article>
+        ))}
+      </Wrapper>
+    );
+  else return null;
 };
 
 export default HomePosts;

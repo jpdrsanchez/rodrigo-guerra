@@ -23,15 +23,16 @@ const FooterContainer = styled(Container)`
       }
 
       &::after {
-        content: '';
-        display: block;
-        width: 0.0625rem;
-        height: 4.375rem;
-        background: rgba(255, 255, 255, 0.15);
-        position: absolute;
-        top: 50%;
-        right: -2.375rem;
-        transform: translateY(-50%);
+        @media (min-width: 37.5em) {
+          top: 50%;
+          right: -2.375rem;
+          content: '';
+          display: block;
+          width: 0.0625rem;
+          height: 4.375rem;
+          background: rgba(255, 255, 255, 0.15);
+          position: absolute;
+        }
       }
     }
 

@@ -9,6 +9,7 @@ const Main = styled.main`
   background-size: auto, cover;
   width: 100%;
   z-index: 400;
+  overflow-x: hidden;
 `;
 
 const MainTemplate = styled(Container)`

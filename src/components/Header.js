@@ -15,15 +15,24 @@ const StyledHeader = styled.header`
 `;
 
 const HeaderContainer = styled(Container)`
-  display: grid;
-  grid-template-columns: 1fr 3fr;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+
+  @media (min-width: 64em) {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+  }
 
   a {
     display: block;
     width: 100%;
-    margin: 0 auto;
     max-width: 10.25rem;
+
+    @media (min-width: 64em) {
+      margin: 0 auto;
+    }
   }
 `;
 

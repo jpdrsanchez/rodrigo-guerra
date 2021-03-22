@@ -6,6 +6,10 @@ const StyledMenu = styled.nav`
   ul {
     display: flex;
     align-items: center;
+
+    @media (max-width: 63.4375em) {
+      display: none;
+    }
   }
 
   li {
@@ -43,7 +47,13 @@ const StyledMenu = styled.nav`
   }
 `;
 
-const Menu = ({ current }) => {
+const MenuButton = styled.button`
+  @media (min-width: 64em) {
+    display: none;
+  }
+`;
+
+const Menu = ({ current, className }) => {
   const menuItems = {
     ['/']: 'home',
     ['/sobre']: 'sobre',
@@ -51,7 +61,8 @@ const Menu = ({ current }) => {
   };
 
   return (
-    <StyledMenu>
+    <StyledMenu className={className}>
+      <MenuButton aria-label="Abrir Menu" type="button" />
       <ul>
         <li>
           <Link href="/">

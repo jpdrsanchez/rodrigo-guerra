@@ -25,8 +25,11 @@ const Values = styled.section`
       display: none;
     }
 
-    @media (min-width: 90em) {
+    @media (min-width: 64em) {
       bottom: 0;
+    }
+
+    @media (min-width: 90em) {
       right: -0.875rem;
     }
   }

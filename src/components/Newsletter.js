@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { showTranslate } from '../styles/animations';
 
 const Form = styled.form`
   background: rgba(255, 255, 255, 0.09);
@@ -11,6 +12,9 @@ const Form = styled.form`
   z-index: 600;
   position: relative;
   justify-content: center;
+  transform: translateY(-2rem);
+  opacity: 0;
+  animation: ${showTranslate} 1s forwards;
 
   @media (max-width: 63.9375em) {
     margin-left: -1rem;

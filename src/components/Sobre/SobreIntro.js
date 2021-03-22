@@ -8,6 +8,20 @@ const Intro = styled.section`
   margin: 0 auto;
   display: grid;
 
+  &::before {
+    @media (min-width: 64em) {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 1rem;
+      width: calc(25% - 0.5rem);
+      height: calc(12rem + 742px);
+      background: url('/images/aside-bg.png') no-repeat center center;
+      background-size: cover;
+    }
+  }
+
   @media (min-width: 52.5em) {
     grid-template-columns: 1fr 1fr;
   }

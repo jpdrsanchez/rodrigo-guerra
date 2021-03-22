@@ -85,12 +85,15 @@ const home = css`
   }
 `;
 
+const sobre = css``;
+
 const PageTemplate = styled.div`
   display: grid;
   grid-area: 1 / 1;
 
   ${(props) => {
     if (props.page === 'home') return home;
+    if (props.page === 'sobre') return sobre;
     else return null;
   }}
 `;

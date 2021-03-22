@@ -7,7 +7,7 @@ const StyledMenu = styled.nav`
     display: flex;
     align-items: center;
 
-    @media (max-width: 63.4375em) {
+    @media (max-width: 63.9375em) {
       display: none;
     }
   }

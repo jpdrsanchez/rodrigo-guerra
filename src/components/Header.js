@@ -25,7 +25,7 @@ const HeaderContainer = styled(Container)`
     align-items: center;
   }
 
-  a {
+  & > a {
     display: block;
     width: 100%;
     max-width: 10.25rem;

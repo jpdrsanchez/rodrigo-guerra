@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
     --darkGray: #0f1312;
     --white: #fff;
     --pink: #cc064c;
+    --grey: #c4c4c4;
 
     /* Units */
     --gutter: .9375rem; // 15px

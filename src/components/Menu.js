@@ -169,6 +169,8 @@ const Cover = styled.div`
 `;
 
 const Menu = ({ current, className }) => {
+  current = current.includes('blog') ? '/blog' : current;
+
   const menuItems = {
     ['/']: 'home',
     ['/sobre']: 'sobre',

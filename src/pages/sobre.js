@@ -9,7 +9,7 @@ const sobre = ({ data }) => {
   const [pageData] = data;
   const { foto, bio, descricao_detalhada, curriculo } = pageData.acf;
   return (
-    <Template page="sobre">
+    <Template>
       <SobreIntro introImage={foto} introText={bio} />
       <SobreText content={descricao_detalhada} />
       <SobreCv content={curriculo} />

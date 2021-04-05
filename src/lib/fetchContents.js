@@ -10,7 +10,7 @@ const fetchContents = async (url) => {
   } catch (err) {
     data = null;
   } finally {
-    return { data };
+    return { response, data };
   }
 };
 

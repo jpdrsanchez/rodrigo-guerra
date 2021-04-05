@@ -109,7 +109,7 @@ const HomePosts = ({ postData }) => {
             />
             <h2>{post._embedded['wp:term'][0][0].name}</h2>
             <h1>{post.title.rendered}</h1>
-            <Link href={`/blog/${post.slug}`}>
+            <Link href={`/${post.slug}`}>
               <a>Leia Mais</a>
             </Link>
           </article>

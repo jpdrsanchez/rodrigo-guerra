@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import Container from './Container';
+import Loading from './Loading';
 
 const Main = styled.main`
   position: relative;
@@ -85,7 +86,50 @@ const home = css`
   }
 `;
 
-const sobre = css``;
+const blog = css`
+  padding-top: 9.75rem;
+  @media (min-width: 64em) {
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 8.375rem 1fr auto;
+  }
+
+  & > * {
+    &:nth-child(1) {
+      @media (min-width: 64em) {
+        grid-column: 1;
+        grid-row: 1;
+        align-self: center;
+      }
+    }
+
+    &:nth-child(2) {
+      @media (min-width: 64em) {
+        grid-column: 1;
+        grid-row: 2;
+      }
+    }
+
+    &:nth-child(3) {
+      @media (min-width: 64em) {
+        grid-column: 2;
+        grid-row: 1 / 3;
+      }
+    }
+
+    &:nth-child(4) {
+      @media (min-width: 64em) {
+        grid-column: 2;
+        grid-row: 3;
+      }
+    }
+  }
+`;
+
+const loading = css`
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+`;
 
 const PageTemplate = styled.div`
   display: grid;
@@ -93,7 +137,8 @@ const PageTemplate = styled.div`
 
   ${(props) => {
     if (props.page === 'home') return home;
-    if (props.page === 'sobre') return sobre;
+    if (props.page === 'blog') return blog;
+    if (props.page === 'loading') return loading;
     else return null;
   }}
 `;
